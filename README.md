@@ -2,6 +2,8 @@
 
 This interactive web application demonstrates the **Value Iteration** algorithm, a fundamental Dynamic Programming method in Reinforcement Learning (RL). Users can observe how an agent learns to navigate a grid while avoiding obstacles and seeking the optimal path to the goal.
 
+Live Demo: https://bytseng.dpdns.org/RL_DIC2/
+
 This project follows the **CRISP-DM (Cross-Industry Standard Process for Data Mining)** framework:
 
 ---

@@ -1,0 +1,364 @@
+:root {
+    --bg-color: #0f172a;
+    --panel-bg: #1e293b;
+    --text-color: #f8fafc;
+    --grid-bg: #334155;
+    --cell-bg: #475569;
+    --cell-border: #94a3b8;
+    --start-bg: #3b82f6;
+    /* Blue */
+    --end-bg: #10b981;
+    /* Green */
+    --block-bg: #1e293b;
+    /* Dark */
+    --path-bg: #ecfccb;
+    /* Lime for path */
+    --accent: #8b5cf6;
+    --accent-hover: #7c3aed;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --success: #10b981;
+    --success-hover: #059669;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --arrow-color: #f8fafc;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--panel-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.progressive-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.step-card {
+    background-color: var(--grid-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    min-width: 150px;
+}
+
+.step-card.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-number {
+    background-color: var(--accent);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.step-content {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.flow-arrow {
+    color: var(--cell-border);
+    font-size: 1.5rem;
+}
+
+.global-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--cell-border);
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: white;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--grid-bg);
+}
+
+.btn-secondary:hover {
+    background-color: var(--cell-bg);
+}
+
+.btn-accent {
+    background-color: var(--accent);
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-success {
+    background-color: var(--success);
+}
+
+.btn-success:hover {
+    background-color: var(--success-hover);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-hover);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--cell-bg);
+    color: var(--cell-border);
+}
+
+.params {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.params label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.params input {
+    width: 60px;
+    padding: 0.3rem;
+    background-color: var(--grid-bg);
+    border: 1px solid var(--cell-border);
+    color: white;
+    border-radius: 4px;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.grid-5x5 {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(5, 80px);
+    gap: 4px;
+    background-color: var(--grid-bg);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.cell {
+    background-color: var(--cell-bg);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.cell.start {
+    background-color: var(--start-bg);
+}
+
+.cell.end {
+    background-color: var(--end-bg);
+}
+
+.cell.blocked {
+    background-color: var(--block-bg);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.1) 10px, rgba(255, 255, 255, 0.1) 20px);
+}
+
+.cell.path {
+    background-color: #65a30d !important;
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 0 15px #a3e635;
+}
+
+.arrow {
+    position: absolute;
+    font-size: 1.2rem;
+    color: var(--arrow-color);
+    opacity: 0.8;
+}
+
+/* Arrow position based on direction */
+.arrow-up {
+    top: 4px;
+}
+
+.arrow-down {
+    bottom: 4px;
+}
+
+.arrow-left {
+    left: 4px;
+}
+
+.arrow-right {
+    right: 4px;
+}
+
+.value {
+    position: absolute;
+    font-size: 0.85rem;
+    z-index: 2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.cell.blocked .value,
+.cell.blocked .arrow {
+    display: none;
+}
+
+.status-panel {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.status-panel h3 {
+    margin-bottom: 0.5rem;
+    color: var(--cell-border);
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.box {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.box.start {
+    background-color: var(--start-bg);
+}
+
+.box.end {
+    background-color: var(--end-bg);
+}
+
+.box.blocked {
+    background-color: var(--block-bg);
+}
+
+/* Animation class */
+.updated {
+    animation: flash 0.5s;
+}
+
+@keyframes flash {
+    0% {
+        filter: brightness(1.5);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-5x5 {
+        grid-template-columns: repeat(5, 60px);
+        grid-template-rows: repeat(5, 60px);
+    }
+}
